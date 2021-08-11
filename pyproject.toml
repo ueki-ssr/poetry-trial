@@ -5,7 +5,7 @@ description = ""
 authors = ["ueki-sassor <ueki@sassor.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.7.1,<4.0"
+python = ">=3.6.1,<4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
