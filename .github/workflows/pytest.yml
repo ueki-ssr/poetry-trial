@@ -32,15 +32,17 @@ jobs:
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero はすべてのエラーを警告として扱う。 GitHub エディタの幅は 127 文字
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      - name: poetry install
-        run: |
-          pip install poetry
-          poetry install
-      - name: Test with pytest
-        run: |
-          poetry run pytest
+      # - name: poetry install
+      #   run: |
+      #     pip install poetry
+      #     poetry install
+      # - name: Test with pytest
+      #   run: |
+      #     poetry run pytest
       - name: Test with pytest on docker container
         run: |
           docker-compose up -d
+          docker-compose exec app pip install --upgrade pip
+          docker-compose exec app pip poetry install
+          docker-compose exec app install poetry
           docker-compose exec app poetry run pytest
-
