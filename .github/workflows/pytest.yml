@@ -43,7 +43,7 @@ jobs:
       - name: Test with pytest on docker container
         run: |
           docker-compose up -d --remove-orphans
-          # docker-compose exec app pip install --upgrade pip
+          docker-compose exec app pip install --upgrade pip
           # docker-compose exec app pip poetry install
           # docker-compose exec app install poetry
           # docker-compose exec app poetry run pytest
