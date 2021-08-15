@@ -45,4 +45,5 @@ jobs:
           docker-compose up -d --remove-orphans &&
           docker-compose exec -T app pip install --upgrade pip &&
           docker-compose exec -T app pip install poetry &&
+          docker-compose exec -T app poetry install &&
           docker-compose exec -T app poetry run pytest
