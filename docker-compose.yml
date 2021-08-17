@@ -5,8 +5,3 @@ services:
     volumes:
       - ./:/app
     tty: true
-  app2:
-    build: ./docker/python
-    volumes:
-      - ./:/app
-    tty: true
