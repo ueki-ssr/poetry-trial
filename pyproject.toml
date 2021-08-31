@@ -5,7 +5,10 @@ description = ""
 authors = ["ueki-sassor <ueki@sassor.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = ">=3.6.1,<4.0"
+pystan = "2.19.1.1"
+fbprophet = "^0.7.1"
+plotly = "^5.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

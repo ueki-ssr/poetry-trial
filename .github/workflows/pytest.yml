@@ -1,0 +1,19 @@
+name: PyTest
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: run pytest on docker container
+        run: |
+          docker-compose up -d
