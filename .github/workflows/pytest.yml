@@ -17,5 +17,3 @@ jobs:
       - name: run pytest on docker container
         run: |
           docker-compose up -d
-          docker-compose exec -T app poetry install
-          docker-compose exec -T app poetry run pytest
