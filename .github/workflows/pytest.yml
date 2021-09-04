@@ -11,30 +11,11 @@ jobs:
   build:
 
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        python-version: [3.8]
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
+      - name: run pytest on docker container
         run: |
-          python -m pip install --upgrade pip
-          pip install flake8 pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Lint with flake8
-        run: |
-          # Python 構文エラーまたは未定義の名前がある場合はビルドを停止する
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # exit-zero はすべてのエラーを警告として扱う。 GitHub エディタの幅は 127 文字
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      - name: poetry install
-        run: |
-          pip install poetry
-      - name: Test with pytest
-        run: |
-          pytest
+          docker-compose up -d
+          docker-compose exec -T app poetry install
+          docker-compose exec -T app poetry run pytest
